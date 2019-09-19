@@ -8,6 +8,8 @@ Description
 
 Data exploration of the "UMD_Services_Provided_20190719.tsv" dataset provided by the Urban Ministry of Durham.  
 
+
+
 ------------
 
 
@@ -15,19 +17,35 @@ Data exploration of the "UMD_Services_Provided_20190719.tsv" dataset provided by
 Metadata
 ------------
 
-Date	Date service was provided
-Client File Number	Family identifier (individual or family)
-Client File Merge	Separate files were created for one family and merged later
+Date	Date service was provided**
+
+Client File Number	Family identifier (individual or family)**
+
+Client File Merge	Separate files were created for one family and merged later**
+
 Bus Tickets (Number of)	 Service discontinued.
+
 Notes of Service	
-Food Provided for	Number of people in the family for which food was provided
-Food Pounds	
-Clothing Items	
-Diapers	
-School Kits	
-Hygiene Kits	
+
+Food Provided for	Number of people in the family for which food was provided**
+
+Food Pounds**	
+
+Clothing Items**	
+
+Diapers**
+
+School Kits**
+
+Hygiene Kits**
+
 Referrals	Ignore this column
+
+
 Financial Support	Money provided to clients. Service discontinued.
+
+
+**Fields of interest
 
 ------------
 
