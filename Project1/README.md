@@ -1,7 +1,58 @@
 Project1
 ==============================
 
-Project1
+
+
+Description
+------------
+
+Data exploration of the "UMD_Services_Provided_20190719.tsv" dataset provided by the Urban Ministry of Durham.  
+
+------------
+
+
+
+Metadata
+------------
+
+Date	Date service was provided
+Client File Number	Family identifier (individual or family)
+Client File Merge	Separate files were created for one family and merged later
+Bus Tickets (Number of)	 Service discontinued.
+Notes of Service	
+Food Provided for	Number of people in the family for which food was provided
+Food Pounds	
+Clothing Items	
+Diapers	
+School Kits	
+Hygiene Kits	
+Referrals	Ignore this column
+Financial Support	Money provided to clients. Service discontinued.
+
+------------
+
+
+Instructions
+------------
+
+Additional data sets were included in this analysis.  See links below.
+
+
+------------
+
+
+Additional Dataset Sources
+------------
+
+https://live-durhamnc.opendata.arcgis.com/datasets/homeless-population-point-in-time-count/data
+https://live-durhamnc.opendata.arcgis.com/datasets/foreclosure-2006-to-2016
+
+
+------------
+
+
+
+
 
 Project Organization
 ------------
@@ -54,4 +105,23 @@ Project Organization
 
 --------
 
+
+
+Contact 
+--------
+
+Meagan Foster
+Github: mlfoste1
+
+
+
+
+
+References
+------------
+
+https://indyweek.com/news/archives/homeless-numbers-durham-reach-10-year-high/
+
+
+--------
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
