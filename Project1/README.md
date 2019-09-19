@@ -63,6 +63,7 @@ Additional Dataset Sources
 ------------
 
 https://live-durhamnc.opendata.arcgis.com/datasets/homeless-population-point-in-time-count/data
+
 https://live-durhamnc.opendata.arcgis.com/datasets/foreclosure-2006-to-2016
 
 
@@ -129,6 +130,7 @@ Contact
 --------
 
 Meagan Foster
+
 Github: mlfoste1
 
 
