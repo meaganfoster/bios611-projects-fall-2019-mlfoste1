@@ -1,0 +1,26 @@
+Project description
+
+
+
+
+--Profile as individuals and families
+--Deduce the number of children by school kits and diapers
+--Find frequency of visits; min, max, median by families
+----Find same data by family type
+--Compare times of year that each family type frequents
+--Compare needs of family types
+--What assumptions can be drawn by the needs of each family type
+--Which services are needed the most?  which services are needed by each family type
+--Those do not need bus passes, what assumptions can be made?
+
+
+Find data on:
+--Statistics on impoverished families by family type
+----Impact on healthcare
+----Needs versus what is being provided
+
+Literature review
+---Determinants of successful programs such as UMOD
+---Other relevant stuff
+
+
