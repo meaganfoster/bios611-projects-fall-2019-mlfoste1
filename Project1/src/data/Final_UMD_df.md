@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Data exploration of the "UMD_Services_Provided_20190719.tsv" dataset provided by the Urban Ministry of Durham.  More specifically, an analysis of the trends in services provided to clients per family size.
 
+Under the U.S. Census Bureau definition, family households consist of two or more individuals who are related by birth, marriage, or adoption, although they also may include other unrelated people. Nonfamily households consist of people who live alone or who share their residence with unrelated individuals.
+
 See ReadMe.md for more information on data sources and project structure.
 
 #Project Plan
@@ -82,5 +84,10 @@ ggplot(final_UMD_df, aes(x=Food_Provided_for)) +
   xlab("Family Size") + 
   ggtitle('Family Size Distribution')
 ```
+
+
+One of the most notable changes is the declining proportion of family households and the rise in single-person households. In 1970, 81 percent of all households were family households, but this was down to 68 percent by 2003. -PRB
+
+The retreat from marriage and the general aging of the population are increasing the number of single-person households. Americans are waiting longer to get married, if they choose to marry at all. Married couples are more likely to get divorced than they were in the 1970s. More of America's elderly live alone after the death of a spouse. In 2003, 26 percent of all U.S. households consisted of just one person, compared with 17 percent in 1970 (see figure). Many European countries have seen a similar rise in single-person households for similar reasons. -PRB
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

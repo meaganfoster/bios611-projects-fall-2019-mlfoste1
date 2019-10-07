@@ -4,6 +4,7 @@ library(dplyr)
 
 #load data file
 UMD_df = read_tsv("https://raw.githubusercontent.com/biodatascience/datasci611/gh-pages/data/project1_2019/UMD_Services_Provided_20190719.tsv", na = '**')
+UMD_df = read_tsv("https://raw.githubusercontent.com/biodatascience/datasci611/gh-pages/data/project1_2019/UMD_Services_Provided_20190719.tsv", na = '**')
 
 
 #View Data structure
@@ -62,19 +63,23 @@ $ Field3                 : logi  NA NA NA NA NA NA ...
 #-------------------------------------------------------------
 #Create dataset
 
+#Replace spaces in field names with underscores
 spaceless <- function(x) {colnames(x) <- gsub(" ", "_", colnames(x));x}
 rename_UMD_df <- spaceless(UMD_df)
 
-select_UMD_df = rename_UMD_df %>%
-  select(-'Client_File_Merge', -'Bus_Tickets_(Number_of)', -'Notes_of_Service', -'Referrals', -'Financial_Support', -`Type_of_Bill_Paid`, -`Payer_of_Support`, -'Field1', -'Field2', -'Field3')
-
-dropna_UMD_df = select_UMD_df %>% 
-  drop_na(Food_Provided_for)  
-      
-filter_UMD_df = dropna_UMD_df %>%
+#Convert date field to date data type; Remove unrelated fields; limit date range to 2006 to 2017 to match open dataset; limit food_provided_for to 1 to 10
+final_UMD_df = rename_UMD_df %>%
+  mutate(Date_of_service = as.Date(UMD_df$Date, "%m/%d/%Y")) %>%
+  select(-'Date', -'Client_File_Merge', -'Bus_Tickets_(Number_of)', -'Notes_of_Service', -'Referrals', -'Financial_Support', -`Type_of_Bill_Paid`, -`Payer_of_Support`, -'Field1', -'Field2', -'Field3') %>%
+  subset(Date_of_service > "2005-12-31" & Date_of_service < "2018-01-01")  %>%
   filter(Food_Provided_for > 0, Food_Provided_for <= 10)
 
-final_UMD_df = filter_UMD_df 
+
+#Create groups
+group_UMD_df$Family_Size <- cut(group_UMD_df$max_Food_Provided_for, breaks = c(0,1,2,3,4,5,6,7,10), labels=c("Individual","2","3","4","5","6","7","8+"))
+
+group_UMD_df$Indv_Family <- cut(group_UMD_df$max_Food_Provided_for, breaks = c(0,1,10), labels=c("Individual","Family"))
+
 
 #View final Data structure
 
@@ -100,15 +105,64 @@ $ Hygiene_Kits      : num  NA NA NA NA NA 1 1 0 NA NA ...
 #-----------------------------------------------------------
 #visuals
 
-ggplot(final_UMD_df, aes(x=Food_Provided_for)) +
-  stat_count() +
-  scale_x_continuous(breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) +
+#select distinct clientfilenum and  max family size determined by food provided for
+
+group_UMD_df = final_UMD_df %>%
+  group_by(Client_File_Number) %>%
+  summarise(max_Food_Provided_for = max(Food_Provided_for))
+  
+#view(group_UMD_df)
+
+#Counts by Family Size (2006-2017)
+ggplot(group_UMD_df, aes(x=Family_Size)) +
+  geom_bar(aes(fill=Family_Size)) +
   xlab("Family Size") + 
-  ggtitle('Family Size Distribution')
+  ggtitle('Counts by Family Size (2006-2017)')
+
+#Individuals Versus Families (2006-2017)
+ggplot(group_UMD_df, aes(x=Indv_Family), group = Indv_Family) +
+  geom_bar(aes(fill=Indv_Family)) +
+  xlab("Family Size") + 
+  ggtitle('Individuals Versus Families (2006-2017)')
 
 
-ggplot(final_UMD_df, aes(Food_Provided_for, Food_Pounds)) +
-  geom_boxplot() +
-  scale_x_continuous(breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) +
-  xlab("Family Size") + 
-  ggtitle('Family Size Distribution') 
+view(group_UMD_df)
+
+#join to original data set to append Date_of_Service
+
+#view by each family size
+
+family_size_group_UMD_df = inner_join(group_UMD_df, final_UMD_df, by = c("Client_File_Number" = "Client_File_Number"), suffix = c(".x", ".y")) %>%
+  mutate(Year_of_Service = format(Date_of_service, "%Y")) %>%
+  group_by(Family_Size, Year_of_Service) %>%
+  drop_na(Food_Provided_for)  %>%
+  count(Family_Size)
+  
+view(family_size_group_UMD_df)
+
+#Total Number Services by Family Size by Year
+ggplot(family_size_group_UMD_df, aes(x=Year_of_Service, y=n, group=Family_Size)) +
+  geom_line(aes(color=Family_Size)) +
+  xlab("Year_of_Service") + 
+  ggtitle('Total Number Services by Family Size by Year')
+
+
+#view by individual vs family
+
+Indv_Family_group_UMD_df = full_join(group_UMD_df, final_UMD_df, by = c("Client_File_Number" = "Client_File_Number"), suffix = c(".x", ".y")) %>%
+  mutate(Year_of_Service = format(Date_of_service, "%Y")) %>%
+  group_by(Indv_Family, Year_of_Service) %>%
+  count(Indv_Family)
+
+view(Indv_Family_group_UMD_df)
+
+#Individual vs Family by Year
+ggplot(Indv_Family_group_UMD_df, aes(x=Year_of_Service, y=n, group=Indv_Family)) +
+  geom_area(aes(fill=Indv_Family)) +
+  scale_x_discrete() +
+  xlab("Year_of_Service") +
+  ylab("Number Serviced") +
+  ggtitle('Individual vs Family by Year')
+
+
+
