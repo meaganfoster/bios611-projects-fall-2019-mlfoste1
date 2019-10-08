@@ -3,6 +3,7 @@ title: "UMD Clients Serviced Versus Durham County Point-In-Time Survey"
 author: "Meagan Foster"
 date: "September 25, 2019"
 output: html_document
+runtime: shiny
 ---
 
   ```{r global, include=FALSE}
@@ -34,6 +35,11 @@ family_size_group_UMD_df = inner_join(group_UMD_df, final_UMD_df, by = c("Client
   mutate(Year_of_Service = format(Date_of_service, "%Y")) %>%
   group_by(Family_Size, Year_of_Service) %>%
   summarise(n=n_distinct(Client_File_Number))
+
+Indv_Family_group_UMD_df = inner_join(group_UMD_df, final_UMD_df, by = c("Client_File_Number" = "Client_File_Number"), suffix = c(".x", ".y")) %>%
+  mutate(Year_of_Service = format(Date_of_service, "%Y")) %>%
+  group_by(Indv_Family, Year_of_Service) %>%
+  summarise(n=n_distinct(Client_File_Number))
   
 Durham_PIT_df = read_csv("https://raw.githubusercontent.com/datasci611/bios611-projects-fall-2019-mlfoste1/master/Project1/data/external/Durham%20County_Homeless_Point%20In%20Time.csv", na = '**')
 
@@ -48,12 +54,24 @@ final_PIT_df$Year_of_service <- cut(final_PIT_df$year, breaks = c(2006,2007,2008
 final_PIT_df$n <- as.numeric(final_PIT_df$count_)
 
 ```
+##Project Aims
 
-## Overview
+
+## Background
+
+The annual PIT counts often mobilize large numbers of volunteers and serve to educate communities about homelessness. However, despite all the community effort and goodwill that goes into them, and due to no fault of the professionals and volunteers who carry them out, the counts are severely flawed. A 2001 study using administrative data collected from homeless service providers estimated that the annual number of homeless individuals is 2.5 to 10.2 times greater than can be obtained using a point in time count.  This is due to:
+
++Inconsistent Methodlogy
+
++Most methodologies miss unsheltered homeless people
+
++Only some kinds of homelessness are counted. Excludes people living with familly member, in jail, or hospitalized
 
 The "UMD_Services_Provided_20190719.tsv" (UMD) dataset provided by the Urban Ministry of Durham. This data was compared to the Durham County Point-In-Time (PIT) dataset to evaluate the volume of clients serviced by Urban Ministry compared to the number of reported homeless people in Durham county.  
 
-The UMD dataset was reduced to dates of service occurring between 2007 and 2016 to match the date range avaialable in the PIT dataset.  The client data in UMD dataset was then categorized as "Indivual" or "Family".  These data was compared in total service vs reported and totals per year.
+The UMD dataset was reduced to dates of service occurring between 2007 and 2016 to match the date range avaialable in the PIT dataset.  The client data in UMD dataset was then categorized as "Individual" or "Family".  These data was compared in total service vs reported and totals per year.
+
+The PIT dataset was filtered down to measures denoted as "Homeless Individuals" or "Homeless People in Families".
 
 Under the U.S. Census Bureau definition, family households consist of two or more individuals who are related by birth, marriage, or adoption, although they also may include other unrelated people. Nonfamily households consist of people who live alone or who share their residence with unrelated individuals.
 
@@ -63,8 +81,8 @@ See ReadMe.md for more information on data sources and project structure.
 ##UMD Data Summary
 
   ```{r}
+
 renderPlot({
-#Counts by Family Size (2007-2016)
 ggplot(group_UMD_df, aes(x=Family_Size)) +
   geom_bar(aes(fill=Family_Size)) +
   xlab("Family Size") + 
@@ -75,7 +93,6 @@ ggplot(group_UMD_df, aes(x=Family_Size)) +
 
   ```{r}
 renderPlot({
-#Individuals Versus Families (2007-2016)
 ggplot(group_UMD_df, aes(x=Indv_Family), group = Indv_Family) +
   geom_bar(aes(fill=Indv_Family)) +
   xlab("Family Size") + 
@@ -86,17 +103,6 @@ ggplot(group_UMD_df, aes(x=Indv_Family), group = Indv_Family) +
 
   ```{r}
 renderPlot({
-Indv_Family_group_UMD_df = inner_join(group_UMD_df, final_UMD_df, by = c("Client_File_Number" = "Client_File_Number"), suffix = c(".x", ".y")) %>%
-  mutate(Year_of_Service = format(Date_of_service, "%Y")) %>%
-  group_by(Indv_Family, Year_of_Service) %>%
-  summarise(n=n_distinct(Client_File_Number))
-})
-```
-
-
-  ```{r}
-renderPlot({
-#Individual vs Family by Year
 ggplot(Indv_Family_group_UMD_df, aes(x=Year_of_Service, y=n, group=Indv_Family)) +
   geom_line(aes(color=Indv_Family)) +
   scale_x_discrete() +
@@ -111,7 +117,6 @@ ggplot(Indv_Family_group_UMD_df, aes(x=Year_of_Service, y=n, group=Indv_Family))
 
   ```{r}
 renderPlot({
-#Individuals Versus Families (2007-2016)
 ggplot(final_PIT_df, aes(x=Indv_Family, y=n)) +
   geom_bar(stat="identity", aes(fill=Indv_Family)) +
   xlab("Family Size") + 
@@ -121,12 +126,12 @@ ggplot(final_PIT_df, aes(x=Indv_Family, y=n)) +
 
   ```{r}
 renderPlot({
-#Total Number Services by Family Size by Year
 ggplot(final_PIT_df, aes(x=Year_of_service, y=n, group=Indv_Family)) +
   geom_line(aes(color=Indv_Family)) +
   scale_x_discrete() +
   xlab("Year_of_Service") + 
-  ggtitle('Durham PIT - Total Number Services by Family Size by Year')
+  ylab("Number Serviced") +
+  ggtitle('Durham PIT - Total Number Serviced by Family Size by Year')
 })
 ```
 
@@ -139,15 +144,16 @@ renderPlot({
     geom_line(data=final_PIT_df, aes(x=Year_of_service, y=n, group=Indv_Family, color=measures)) +
     xlab("Year of Service") +
     ylab("Number Serviced") +
-    ggtitle('Number of People Serviced vs Number Reported in Durham PIT Count')})
+    ggtitle('Number of People Serviced vs Number Reported in Durham PIT Count')
+    })
 ```
 
 ##Conclusion
 
-Conduct a better count nationally. HUD's count should:
+More accurate representation of families in the PIT survey would allow Urban Ministries to quantify their impact on the Durham community and advocate for more resources to ensure all that need assistance, recieve assistance. 
 
-.Be nationally coordinated with a more consistent and morerigorous methodology. This and requires appropriate fundinglevels in order to get more useful data.
+#Limitations
 
-.Include estimation techniques designed and overseen byexperts in order to quantify the number of homeless individualsthat were missed during the count.
++Current PIT count data must always be used with the explicit recognition that the data represent significant undercounts.
 
-.Include all people experiencing homelessness, includingindividuals that are institutionalized in hospitals and jails orprisons
++Usage of year-to-year trends must include scrutiny of any methodology or classification changes that may have also occurred over the time period.
