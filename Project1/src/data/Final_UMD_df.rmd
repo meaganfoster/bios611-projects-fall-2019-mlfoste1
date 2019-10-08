@@ -56,24 +56,17 @@ final_PIT_df$n <- as.numeric(final_PIT_df$count_)
 ```
 ##Project Aims
 
+To quantify the impact of the services provided by UMD on the homeless population in Durham County by comparing the number of reported homeless people to the number of clients serviced at UMD.
 
-## Background
-
-The annual PIT counts often mobilize large numbers of volunteers and serve to educate communities about homelessness. However, despite all the community effort and goodwill that goes into them, and due to no fault of the professionals and volunteers who carry them out, the counts are severely flawed. A 2001 study using administrative data collected from homeless service providers estimated that the annual number of homeless individuals is 2.5 to 10.2 times greater than can be obtained using a point in time count.  This is due to:
-
-+Inconsistent Methodlogy
-
-+Most methodologies miss unsheltered homeless people
-
-+Only some kinds of homelessness are counted. Excludes people living with familly member, in jail, or hospitalized
+## Data Overview
 
 The "UMD_Services_Provided_20190719.tsv" (UMD) dataset provided by the Urban Ministry of Durham. This data was compared to the Durham County Point-In-Time (PIT) dataset to evaluate the volume of clients serviced by Urban Ministry compared to the number of reported homeless people in Durham county.  
 
-The UMD dataset was reduced to dates of service occurring between 2007 and 2016 to match the date range avaialable in the PIT dataset.  The client data in UMD dataset was then categorized as "Individual" or "Family".  These data was compared in total service vs reported and totals per year.
+The UMD dataset was reduced to dates of service occurring between 2007 and 2016 to match the date range avaialable in the PIT dataset.  The client data in UMD dataset was then categorized as "Individual" or "Family" using the "Food Provided For" variable.  Clients were assigned to "Family" if at any visit, "Food Provided For" >= 2.  NULL values at "Food Provided For" and values over 10 were excluded from the dataset.
 
 The PIT dataset was filtered down to measures denoted as "Homeless Individuals" or "Homeless People in Families".
 
-Under the U.S. Census Bureau definition, family households consist of two or more individuals who are related by birth, marriage, or adoption, although they also may include other unrelated people. Nonfamily households consist of people who live alone or who share their residence with unrelated individuals.
+Of note, under the U.S. Census Bureau definition, family households consist of two or more individuals who are related by birth, marriage, or adoption, although they also may include other unrelated people. Nonfamily households consist of people who live alone or who share their residence with unrelated individuals.
 
 See ReadMe.md for more information on data sources and project structure.
 
@@ -150,7 +143,22 @@ renderPlot({
 
 ##Conclusion
 
-More accurate representation of families in the PIT survey would allow Urban Ministries to quantify their impact on the Durham community and advocate for more resources to ensure all that need assistance, recieve assistance. 
+The number of individuals serviced by UMD and the reported number of homeless individuals in Durham County was relatively consistent as opposed to the significant gap in the number of families that are serviced by UMD and the number of reported homeless families in Durham County.  UMD services a high number of families, equating to about double the amount of individuals it services and nearly three times more families than reported in the PIT survey.  Yet, UMD provides shelter for a maximum of nine families at a time, compared to the maximum of one hundred fifteen for homeless individuals.
+
+More accurate representation of families in the PIT survey would allow Urban Ministries to quantify their impact on the Durham community and advocate for more resources to ensure all that need assistance, recieve assistance.  Resources and iniatives should be centered around reliable data that allows for sound decision making.  Unfortunately, the PIT survey does not provide that for homeless families.
+
+My recommendation for HUD would be to integrate more of the homeless community and service providers in its surveying process. This can be achieved by hiring people from the homeless community to assist in gathering talleys and partnering with service providers to assess the most viable approaches to collect these data.  Additionally, registration captured at time of service could assist in supplementing the yearly survey.
+
+#More on PIT
+The annual PIT counts often mobilize large numbers of volunteers and serve to educate communities about homelessness. However, despite all the community effort and goodwill that goes into them, and due to no fault of the professionals and volunteers who carry them out, the counts are severely flawed. A 2001 study using administrative data collected from homeless service providers estimated that the annual number of homeless individuals is 2.5 to 10.2 times greater than can be obtained using a point in time count.  This is due to:
+
++Inconsistent Methodlogy
+
++Most methodologies miss unsheltered homeless people
+
++Only some kinds of homelessness are counted. Excludes people living with familly member, in jail, or hospitalized
+
+See "HUD-PIT-report2017.pdf" in references folder to continue reading more on the PIT survey.
 
 #Limitations
 
