@@ -1,35 +1,37 @@
 library(shiny)
 library(tidyverse)
 
-UMD_df = read_tsv("https://raw.githubusercontent.com/biodatascience/datasci611/gh-pages/data/project1_2019/UMD_Services_Provided_20190719.tsv", na = '**')
+#UMD_df = read_tsv("https://raw.githubusercontent.com/biodatascience/datasci611/gh-pages/data/project1_2019/UMD_Services_Provided_20190719.tsv", na = '**')
+
+source("helper_functions.R",local = F)
 
 # Define UI for app that draws a histogram and a data table----
 ui <- fluidPage(
   
   # App title ----
-  titlePanel("Dashboard"),
+  titlePanel("UMD TO PIT: Dashboard"),
   
   # Sidebar layout with input and output definitions ----
   sidebarLayout(
     
     # Sidebar panel for inputs ----
-    sidebarPanel(
+    sidebarPanel("TESTING",
       
       # Input: Integer for the year ----
-      numericInput(inputId = "year",
+      selectInput(inputId = "yearinput",
                    label = "Number of year:",
-                   min = 2006,
-                   max = 2017,
-                   value = 2016)
+                   choices = list("2006","2007", "2008",
+                                  "2009", "2010", "2011",
+                                  "2012","2013","2014",
+                                  "2015","2016"),
+                   selected = 1)
     ),
     
     # Main panel for displaying outputs ----
     mainPanel(
       
       # Output: Histogram and table----
-      plotOutput(outputId = "popPlot"),
-      dataTableOutput(outputId = "popTable")
-      
+      plotOutput(outputId = "serv_reprt")
     )
   )
 )
@@ -38,20 +40,13 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   # renderPlot creates histogram and links to ui
-  output$popPlot <- renderPlot({
-    year = seq(min(UMD_df$[Food Provided for], na.rm = T), 
-               max(UMD_df$[Food Provided for], na.rm = T), 
-               length.out = input$year + 1)
-    
-    ggplot(UMD_df, aes(x=[Food Provided for])) +
-      geom_histogram(breaks = year) +
-      labs(x = "[Food Provided for] size",
-           title = "Histogram of Food Provided for") +
-      scale_y_log10()
+  output$serv_reprt <- renderPlot({
+    serv_reprt_plot(input$yearinput)
   })
+
   
   # Data table output, linked to ui
-  output$popTable <- renderDataTable({UMD_df})
-}
+ # output$popTable <- renderDataTable({inputSserv_reprt_df})
 
+}
 shinyApp(ui = ui, server = server)
