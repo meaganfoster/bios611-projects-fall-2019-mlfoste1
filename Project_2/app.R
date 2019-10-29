@@ -9,22 +9,22 @@ source("helper_functions.R",local = F)
 ui <- fluidPage(
   
   # App title ----
-  titlePanel("UMD TO PIT: Dashboard"),
+  titlePanel("Number of People Serviced vs Number Reported in Durham PIT Count"),
   
   # Sidebar layout with input and output definitions ----
   sidebarLayout(
     
     # Sidebar panel for inputs ----
-    sidebarPanel("TESTING",
+    sidebarPanel("Select a year from 2006 to 2016",
       
       # Input: Integer for the year ----
       selectInput(inputId = "yearinput",
                    label = "Number of year:",
-                   choices = list("2006","2007", "2008",
-                                  "2009", "2010", "2011",
-                                  "2012","2013","2014",
-                                  "2015","2016"),
-                   selected = 1)
+                   c("2006"="2006","2007"="2007", "2008"="2008",
+                                  "2009"="2009", "2010"="2010", "2011"="2011",
+                                  "2012"="2012","2013"="2013","2014"="2014",
+                                  "2015"="2015","2016"="2016"),
+                   selected = "2010")
     ),
     
     # Main panel for displaying outputs ----

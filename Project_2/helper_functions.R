@@ -126,10 +126,19 @@ fam_size_plot = ggplot(final_PIT_df, aes(x=Year_of_service, y=n, group=Indv_Fami
 
 #Number serviced vs number reported
 serv_reprt_plot = function(yearinput){
-  ggplot(Indv_Family_group_UMD_df, aes(x=yearinput, y=n, group=Indv_Family)) +
-    geom_line(size=1.5, aes(color=Indv_Family)) +
-    geom_line(data=final_PIT_df, aes(x=Year_of_service, y=n, group=Indv_Family, color=measures)) +
-    xlab("Year of Service") +
-    ylab("Number Serviced") +
-    ggtitle('Number of People Serviced vs Number Reported in Durham PIT Count')
+  final_PIT_df_plot = final_PIT_df %>%
+    filter(year==yearinput)
+  
+#view(final_PIT_df_plot)
+
+Indv_Family_group_UMD_df_plot = Indv_Family_group_UMD_df %>%
+  filter(Year_of_Service==yearinput)
+
+#view(Indv_Family_group_UMD_df_plot)
+
+  ggplot(Indv_Family_group_UMD_df_plot, aes(x=Indv_Family, y=n, group = Indv_Family)) +
+    geom_bar(aes(fill=Indv_Family), stat="Identity") +
+    geom_bar(data=final_PIT_df_plot, aes(x=measures, y=n, fill=measures), stat="Identity") +
+    xlab("") +
+    ylab("Number Serviced")
 }
