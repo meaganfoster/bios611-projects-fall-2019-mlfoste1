@@ -140,5 +140,8 @@ Indv_Family_group_UMD_df_plot = Indv_Family_group_UMD_df %>%
     geom_bar(aes(fill=Indv_Family), stat="Identity") +
     geom_bar(data=final_PIT_df_plot, aes(x=measures, y=n, fill=measures), stat="Identity") +
     xlab("") +
-    ylab("Number Serviced")
+    ylab("Number of People Serviced or Reported") +
+    theme(axis.title.x=element_blank(),
+          axis.text.x=element_blank(),
+          axis.ticks.x=element_blank())
 }
