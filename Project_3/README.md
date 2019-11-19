@@ -2,92 +2,66 @@ Project_2
 ==============================
 
 
-
-Description
+------------
+Project Descripton
 ------------
 
-This project deliverable is a shiny dashboard that will allow UMD to examine the volume of families and individuals by year and family size.  Additionally, this dashboard will include supplemental data that will allow UMD to compare their volume of clients serviced with the reported homeless population of their city or similar cities.
+Use Docker, Make, R and Python for exploratory analysis of UMD data sets. The data wrangling for this project must be done in Python. The project needs to have a standard folder structure, include a .gitignore, and an informative README.
 
 
+------ ------
+Overview 
 ------------
-
-
-
-Metadata
-------------
-
-Date	Date service was provided**
-
-Client File Number	Family identifier (individual or family)**
-
-Client File Merge	Separate files were created for one family and merged later**
-
-Bus Tickets (Number of)	 Service discontinued.
-
-Notes of Service	
-
-Food Provided for	Number of people in the family for which food was provided**
-
-Food Pounds
-
-Clothing Items	
-
-Diapers
-
-School Kits
-
-Hygiene Kits
-
-Referrals	Ignore this column
-
-
-Financial Support	Money provided to clients. Service discontinued.
-
-
-**Fields of interest
-
-------------
-
-
-Instructions
-------------
-
-Additional data sets were included in this analysis.  See links below.
+My exploratory analysis will focus on the following aims:
+(1) Perform analysis to visualize demographic distribution 
+(2) Understand prevalance of prominent disabilities across demographic groups
+(3) Explore health insurance type distribution across demographic groups
+(4) Where VeteranStatus = "Yes", repeat steps 1-3
 
 
 ------------
+Data Elements of interest
+------------
+
+Client_ID
+Age
+Race
+Ethnicity
+Zip
+Veteran Status
+Health Insurance Type
+Disability Type
 
 
+------------
+Instructions for use
+------------
+
+For data wrangling code, see pandas_project3.ipynb
+For plots, see master_df.r --In progress
+
+
+------------
 Additional Dataset Sources
 ------------
 
-https://live-durhamnc.opendata.arcgis.com/datasets/homeless-population-point-in-time-count/data
-
-https://live-durhamnc.opendata.arcgis.com/datasets/foreclosure-2006-to-2016
-
 
 ------------
-
-
-
 Contact 
---------
+------------
 
 Meagan Foster
 
 Github: mlfoste1
 
 
-
-
-
+------------
 References
 ------------
 
-https://indyweek.com/news/archives/homeless-numbers-durham-reach-10-year-high/
 
-
+------------
 Results
 ------------
 
-https://mlfoste1.shinyapps.io/Project_2/
+
