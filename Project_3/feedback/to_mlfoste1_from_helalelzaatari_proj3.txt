@@ -1,0 +1,33 @@
+1) Yes the project is organized modularly with make as the workflow manager
+
+2) Yes python is used exclusively for wrangling and includes the package pandas and 
+R is used for visualization with tidyverse and ggplot used.
+
+3)Yes there is a docker file and I think it works fine. I didn't run the code I just
+looked at it looks fine.
+
+4) Yes, the author was interested in the clients age, race ethnicity, veteran status
+and disability type and a bunch of other things. THe plots used in R had various patterns
+and relationships shown such as number of individual families and years of service.
+plot.
+
+5) In my opinion the project is very well organized as is. It was commented pretty well
+and it is very structured. Maybe add some more empty lines between the comments and code
+in the docker and makefiles.
+
+6) Yes it was clear from the README what the author wanted to achieve.
+
+7) This project takes into account many variables in which clients have. For example, 
+their age or whether they are a veteran etc... It would help the client more if more detail
+was included in the goal section of the README.
+
+8) No, it should be included in the author's README. 
+
+9) The figures are pretty self explanatory. However in my opinion, it would be useful
+to add some interpretation comments in the R code after a plot was coded.
+
+10) Yes in both the python and R code there was a comment signaling the author's purpose
+and what they wanted to achieve with that code.
+
+11) The take- home messages should be added in the updated README or commented in the R-code.
+But the messages were clear if you ran the R code and saw the plots.
