@@ -8,6 +8,7 @@ Project Descripton
 
 Use Docker, Make, R and Python for exploratory analysis of UMD data sets. The data wrangling for this project must be done in Python. The project needs to have a standard folder structure, include a .gitignore, and an informative README.
 
+
 ------ ------
 Instructions
 ------ ------
@@ -29,6 +30,7 @@ My exploratory analysis will focus on the following aims:
 ------------
 Data Elements of interest
 ------------
+Data provided by Urban Ministries of Durham.
 
 Client_ID
 Age
