@@ -1,9 +1,0 @@
-build-image: Dockerfile.project3
-	docker build -t mlfoste1 -f Dockerfile.project3 . && touch $@
-
-build-docker-image: build-image
-	cp build-image build-docker-image
-	
-project3_out.png: build-docker-image
-	docker run -it --rm -v $(shell pwd):/unc -w /unc mlfoste1 /bin/bash -c \
-	"make -f Makefile.project3 project3_out.png -Bnd | make2graph | dot -Tpng -o project3_out.png"

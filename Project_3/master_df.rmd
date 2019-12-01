@@ -1,0 +1,74 @@
+---
+title: "Veterans With Disabilities"
+author: "Meagan Foster"
+date: "December 1, 2019"
+output: html_document
+runtime: shiny
+---
+
+  ```{r include=FALSE}
+
+source('master_df.R')
+
+```
+
+## Overview
+
+The "UMD_Services_Provided_20190719.tsv" (UMD) dataset provided by the Urban Ministry of Durham. This data was compared to the Durham County Point-In-Time (PIT) dataset to evaluate the volume of clients serviced by Urban Ministry compared to the number of reported homeless people in Durham county.  
+
+The UMD dataset was reduced to dates of service occurring between 2007 and 2016 to match the date range avaialable in the PIT dataset.  The client data in UMD dataset was then categorized as "Indivual" or "Family".  These data was compared in total service vs reported and totals per year.
+
+Under the U.S. Census Bureau definition, family households consist of two or more individuals who are related by birth, marriage, or adoption, although they also may include other unrelated people. Nonfamily households consist of people who live alone or who share their residence with unrelated individuals.
+
+See ReadMe.md for more information on data sources and project structure.
+
+
+##UMD Data Summary
+
+  ```{r}
+#Veteran Status by Gender
+veteranstatus_gender_plot
+```
+
+
+  ```{r}
+#Veteran Status by Race
+veteranstatus_race_plot
+```
+
+
+  ```{r}
+#Veteran Status by Age
+veteranstatus_age_plot
+```
+
+
+  ```{r}
+#Veteran Status by Age
+disability_plot
+```
+
+
+
+  ```{r}
+#Veteran Status by Age
+disability_master_plot
+```
+
+
+
+  ```{r}
+#Veterans with Disabilities
+disability_veteran_plot
+```
+
+
+##Conclusion
+
+Conduct a better count nationally. HUD's count should:
+
+.Be nationally coordinated with a more consistent and morerigorous methodology. This and requires appropriate fundinglevels in order to get more useful data.
+
+.Include estimation techniques designed and overseen byexperts in order to quantify the number of homeless individualsthat were missed during the count.
+
+.Include all people experiencing homelessness, includingindividuals that are institutionalized in hospitals and jails orprisons
