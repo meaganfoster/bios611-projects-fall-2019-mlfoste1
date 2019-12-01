@@ -1,4 +1,4 @@
-Dockerfile:
+dockerfile:
 	docker build -t tag -f scripts/Dockerfile .
 	
 master.csv:
