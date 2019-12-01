@@ -1,5 +1,5 @@
 dockerfile:
-	docker build -t tag -f scripts/Dockerfile .
+	docker build -t tag -f scripts/Dockerfile
 	
 master.csv:
 	docker run -d --rm -v "$(pwd):$(pwd)" -w "$(pwd)" Dockerfile && touch $@
