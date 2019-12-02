@@ -204,11 +204,11 @@ master_df.head(10)
 
 
 # Declare a list that is to be converted into a column 
-master_df.count_ = ['1'] 
+#master_df.count_ = ['1'] 
   
 # Using 'Address' as the column name 
 # and equating it to the list 
-master_df.[count_] = ['1'] 
+#master_df.[count_] = ['1'] 
 
 
 # In[39]:
