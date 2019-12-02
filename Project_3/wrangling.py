@@ -97,7 +97,7 @@ disability_pivot_df1 = disability_Yes_df[['ClientID','Determination','Disability
 # In[29]:
 
 
-disability_pivot_df = pd.pivot(disability_pivot_df1, index = 'ClientID', columns = 'DisabilityType', values = 'Determination')
+disability_pivot_df = pd.pivot(disability_pivot_df1, index = 'ClientID', columns = 'DisabilityType', values = 'Determination').fillna('No (HUD)')
 
 #disability_pivot_df
 
