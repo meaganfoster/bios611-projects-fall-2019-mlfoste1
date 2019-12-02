@@ -1,5 +1,5 @@
 build:
-	docker build -t scripts/dockerfile dockerfile
+	docker build -t scripts
 	
 master.csv:
 	docker run -d --rm -v "$(pwd):$(pwd)" -w "$(pwd)" dockerfile && touch $@
