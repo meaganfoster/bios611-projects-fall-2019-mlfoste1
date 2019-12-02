@@ -8,5 +8,5 @@ master.csv: build
 disability.csv: build
 	python wrangling.py
 
-results/master_df.html: disability.csv master.csv
+master_df.html: disability.csv master.csv
 	Rscript -e "rmarkdown::render('master_df.rmd', 'html_document',output_dir = 'results/')"
