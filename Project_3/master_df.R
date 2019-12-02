@@ -1,7 +1,7 @@
 library(tidyverse)
 library(dplyr)
 library(stringr)
-
+library(shiny)
 
 
 #load master data file
@@ -89,7 +89,6 @@ disability_plot = ggplot(disability_df, aes(x = DisabilityType, fill = Disabilit
   geom_bar() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
   theme_minimal()
-
 #disability_plot
 
 disability_master_df = inner_join(disability_df, master_df, by = c("ClientID" = "ClientID"), suffix = c(".x", ".y")) %>%
