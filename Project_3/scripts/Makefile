@@ -2,11 +2,11 @@ build:
 	docker build -t dockerbuild	.	-f scripts/Dockerfile && \
 	touch $@
 	
-master.csv:
+master.csv: wrangling.ipynb
 	docker run -d --rm -v "$(pwd):$(pwd)" -w "$(pwd)" dockerfile && touch $@
 	python wrangling.ipynb $@
 
-disability.csv:
+disability.csv: wrangling.ipynb
 	docker run -d --rm -v "$(pwd):$(pwd)" -w "$(pwd)" dockerfile && touch $@
 	python wrangling.ipynb $@
 
