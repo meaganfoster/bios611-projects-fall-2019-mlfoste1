@@ -99,7 +99,7 @@ disability_pivot_df1
 
 disability_pivot_df = pd.pivot(disability_pivot_df1, index = 'ClientID', columns = 'DisabilityType', values = 'Determination')
 
-disability_pivot_df
+#disability_pivot_df
 
 
 # In[30]:
