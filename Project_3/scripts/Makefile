@@ -3,13 +3,10 @@ build:
 	touch $@
 	
 master.csv: wrangling.ipynb build
-	docker run -d --rm -v "$(pwd):$(pwd)" -w "$(pwd)" dockerfile && touch $@
 	python wrangling.ipynb $@
 
 disability.csv: wrangling.ipynb build
-	docker run -d --rm -v "$(pwd):$(pwd)" -w "$(pwd)" dockerfile && touch $@
 	python wrangling.ipynb $@
 
 results/master_df.html: disability.csv master.csv
-	docker run -d --rm -v "$(pwd):$(pwd)" -w "$(pwd)" dockerbuild && touch $@
-	Rscript -e "library(rmarkdown); rmarkdown::render('scripts/master_df.rmd', 'html_document')"  && mv master_df.html ../results
+	Rscript -e "rmarkdown::render('./scripts/master_df.rmd', 'html_document',output_dir = './results/')"
