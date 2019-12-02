@@ -1,4 +1,4 @@
-dockerfile:
+build:
 	docker build -t scripts/dockerfile dockerfile
 	
 master.csv:
