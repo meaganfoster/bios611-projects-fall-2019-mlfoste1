@@ -3,11 +3,9 @@ title: "Veterans With Disabilities"
 author: "Meagan Foster"
 date: "December 1, 2019"
 output: html_document
-runtime: shiny
 ---
 
   ```{r include=FALSE}
-
 source('master_df.R')
 
 ```
