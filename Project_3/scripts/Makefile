@@ -2,10 +2,10 @@ build:
 	docker build -t dockerbuild	.	-f scripts/Dockerfile && \
 	touch $@
 	
-master.csv: wrangling.ipynb build
+master.csv: build
 	python wrangling.ipynb $@
 
-disability.csv: wrangling.ipynb build
+disability.csv: build
 	python wrangling.ipynb $@
 
 results/master_df.html: disability.csv master.csv
