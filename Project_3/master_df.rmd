@@ -1,11 +1,11 @@
 ---
-title: "Veterans With Disabilities"
+title: "Homeless Veterans with Disabilites"
 author: "Meagan Foster"
 date: "December 1, 2019"
 output: html_document
 ---
 
-  ```{r include=FALSE}
+  ```{r}
 source('master_df.R')
 
 ```
