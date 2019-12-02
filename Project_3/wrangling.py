@@ -97,7 +97,7 @@ disability_pivot_df1
 # In[29]:
 
 
-disability_pivot_df = pd.pivot(disability_pivot_df1, index = 'ClientID', columns = 'DisabilityType', values = 'Determination')
+disability_pivot_df = pd.pivot(disability_pivot_df1, index = 'ClientID', columns = 'DisabilityType', values = 'Determination').drop_duplicates()
 
 #disability_pivot_df
 
