@@ -91,13 +91,13 @@ disability_csv = disability_Yes_df.to_csv (r'data\disability.csv', index = None,
 
 disability_pivot_df1 = disability_Yes_df[['ClientID','Determination','DisabilityType']].drop_duplicates()
 
-disability_pivot_df1
+#disability_pivot_df1
 
 
 # In[29]:
 
 
-disability_pivot_df = pd.pivot(disability_pivot_df1, index = ['ClientID','DisabilityType'], columns = 'DisabilityType', values = 'Determination').drop_duplicates()
+disability_pivot_df = pd.pivot(disability_pivot_df1, index = 'ClientID', columns = 'DisabilityType', values = 'Determination').drop_duplicates()
 
 #disability_pivot_df
 
