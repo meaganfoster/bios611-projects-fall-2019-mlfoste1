@@ -9,4 +9,4 @@ disability.csv: build
 	python wrangling.py
 
 results/master_df.html: disability.csv master.csv
-	Rscript -e "rmarkdown::render('scripts/master_df.rmd', 'html_document',output_dir = 'results/')"
+	Rscript -e "rmarkdown::render('master_df.rmd', 'html_document',output_dir = 'results/')"
