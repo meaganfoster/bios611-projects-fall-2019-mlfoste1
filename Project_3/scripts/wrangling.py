@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[110]:
 
 
 import pandas as pd
 
 
-# In[2]:
+# In[111]:
 
 
 import numpy as np
 
 
-# In[29]:
+# In[112]:
 
 
 # Read in the client demographics data
@@ -34,7 +34,7 @@ client_read_df
 #print (client_total_rows)
 
 
-# In[30]:
+# In[113]:
 
 
 #Update columns names
@@ -44,7 +44,7 @@ client_read_df.columns=['ClientID', 'Age', 'Gender', 'Race','Ethnicity','Veteran
 client_read_df
 
 
-# In[100]:
+# In[114]:
 
 
 #Update values for better readability
@@ -66,7 +66,7 @@ client_read_df = client_read_df.replace(to_replace ="No (HUD)", value ="No")
 client_read_df
 
 
-# In[106]:
+# In[115]:
 
 
 #Create distinct client list using the max age recorded
@@ -75,7 +75,7 @@ client_maxage_df = client_read_df.groupby(['ClientID'], sort=False)['Age'].max()
 client_maxage_df
 
 
-# In[107]:
+# In[116]:
 
 
 client_maxage_df = client_maxage_df.to_frame().reset_index()
@@ -83,7 +83,7 @@ client_maxage_df = client_maxage_df.to_frame().reset_index()
 client_maxage_df.columns = ['ClientID','Age']
 
 
-# In[108]:
+# In[117]:
 
 
 #Append corresponding demographics to distinct patient list
@@ -93,7 +93,7 @@ client_df = pd.merge(client_maxage_df, client_read_df, how='left', left_on = ['C
 client_df
 
 
-# In[6]:
+# In[118]:
 
 
 # Read in the disability data
@@ -110,11 +110,9 @@ disability_read_df = pd.read_csv(
 )
 
 disability_read_df
-#disability_total_rows = disability_df.count
-#print (disability_total_rows)
 
 
-# In[7]:
+# In[119]:
 
 
 #Update column names
@@ -123,16 +121,16 @@ disability_read_df.columns=['ClientID', 'Determination', 'DisabilityType', 'Star
 disability_read_df
 
 
-# In[8]:
+# In[120]:
 
 
 #filter down to clients that have atleast 1 disability
-disability_Yes_df = disability_read_df[disability_df['Determination'] == 'Yes (HUD)'].drop_duplicates()
+disability_Yes_df = disability_read_df[disability_read_df['Determination'] == 'Yes (HUD)'].drop_duplicates()
 
 disability_Yes_df.head(10)
 
 
-# In[15]:
+# In[121]:
 
 
 #Drop start date and remove duplicates
@@ -141,7 +139,7 @@ disability_pivot_df1 = disability_Yes_df[['ClientID','Determination','Disability
 disability_pivot_df1
 
 
-# In[18]:
+# In[122]:
 
 
 #Pivot disability table
@@ -150,7 +148,7 @@ disability_pivot_df = disability_pivot_df1.pivot(index = 'ClientID', columns = '
 disability_pivot_df
 
 
-# In[20]:
+# In[123]:
 
 
 #Rename columns
@@ -160,7 +158,7 @@ disability_pivot_df.columns=['AlcoholAbuse','AlcoholandDrugAbuse','ChronicHealth
 disability_pivot_df
 
 
-# In[58]:
+# In[124]:
 
 
 #Update values to binary values
@@ -170,7 +168,7 @@ disability_pivot_df2 = disability_pivot_df1.replace(to_replace ="No (HUD)", valu
 disability_pivot_df2
 
 
-# In[73]:
+# In[125]:
 
 
 #convert to integer fields
@@ -192,7 +190,7 @@ disability_pivot_df2['VisionImpaired'] = disability_pivot_df2['VisionImpaired'].
 print (disability_pivot_df2.dtypes)
 
 
-# In[88]:
+# In[126]:
 
 
 #Sum the number of disabilities
@@ -209,7 +207,7 @@ disability_df
 # In[92]:
 
 
-disability_csv = disability_df.to_csv (r'data\disability.csv', index = "ClientID", header=True) #Don't forget to add '.csv' at the end of the path
+#disability_csv = disability_df.to_csv (r'data\disability.csv', index = "ClientID", header=True) #Don't forget to add '.csv' at the end of the path
 #disability_read_csv = disability_Yes_df.to_csv (r'data\disability_orig.csv', index = "ClientID", header=True) #Don't forget to add '.csv' at the end of the path
 
 
