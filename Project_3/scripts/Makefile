@@ -4,21 +4,6 @@ build_project3:
 	
 master.csv: build_project3
 	python scripts/wrangling.py && \
-	git add .
-	git config --global user.email "mlfoste1@gmail.com"
-	git config --global user.name "mlfoste1"
-	git commit -m "update master.csv"
-	git push -u origin master
-	
-
-disability.csv: build_project3
-	python scripts/wrangling.py && \
-	git add .
-	git config --global user.email "mlfoste1@gmail.com"
-	git config --global user.name "mlfoste1"
-	git commit -m "update master.csv"
-	git push -u origin master
-
 	
 results/master_df.html: disability.csv master.csv
 	Rscript -e "rmarkdown::render('scripts/master_df.rmd', 'html_document',output_dir = 'results/')"
