@@ -5,19 +5,19 @@ build_project3:
 master.csv: build_project3
 	python scripts/wrangling.py && \
 	git:
-    git add .
-    git commit -m "$m"
-	make git m="master.csv added"
-    git push -u origin master
+		git add .
+		git commit -m "$m"
+		make git m="master.csv added"
+		git push -u origin master
 	
 
 disability.csv: build_project3
 	python scripts/wrangling.py && \
 	git:
-    git add .
-    git commit -m "$m"
-	make git m="master.csv added"
-    git push -u origin master
+		git add .
+		git commit -m "$m"
+		make git m="master.csv added"
+		git push -u origin master
 
 	
 results/master_df.html: disability.csv master.csv
