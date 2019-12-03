@@ -5,5 +5,5 @@ build_project3:
 master.csv: build_project3
 	python scripts/wrangling.py && \
 	
-results/master_df.html: disability.csv master.csv
+results/master_df.html: master.csv
 	Rscript -e "rmarkdown::render('scripts/master_df.rmd', 'html_document',output_dir = 'results/')"
