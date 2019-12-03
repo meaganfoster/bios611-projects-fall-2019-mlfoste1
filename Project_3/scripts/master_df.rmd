@@ -1,5 +1,5 @@
 ---
-title: "Homeless Veterans with Disabilites"
+title: "Comparative Analysis of the Homeless Veteran and Non-Veteran Demographic Profiles and Disabilitiesat Urban Ministries of Durham"
 author: "Meagan Foster"
 date: "December 1, 2019"
 output: html_document
@@ -11,13 +11,15 @@ source("master_df.R")
 
 ```
 
-## Overview
+## Objectives
 
-The "UMD_Services_Provided_20190719.tsv" (UMD) dataset provided by the Urban Ministry of Durham. This data was compared to the Durham County Point-In-Time (PIT) dataset to evaluate the volume of clients serviced by Urban Ministry compared to the number of reported homeless people in Durham county.  
+.Homeless veterans in the US
 
-The UMD dataset was reduced to dates of service occurring between 2007 and 2016 to match the date range avaialable in the PIT dataset.  The client data in UMD dataset was then categorized as "Indivual" or "Family".  These data was compared in total service vs reported and totals per year.
+.Compare race, gender, and age for non-veteran and veteran clients at UMD
 
-Under the U.S. Census Bureau definition, family households consist of two or more individuals who are related by birth, marriage, or adoption, although they also may include other unrelated people. Nonfamily households consist of people who live alone or who share their residence with unrelated individuals.
+.Compare prevalence of disabilities for non-veteran and veteran clients 
+
+.Summary
 
 See ReadMe.md for more information on data sources and project structure.
 
