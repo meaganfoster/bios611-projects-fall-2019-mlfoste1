@@ -3,10 +3,10 @@ build_project3:
 	touch $@
 	
 master.csv: build_project3
-	python wrangling.py
+	wrangling.py
 
 disability.csv: build_project3
-	python wrangling.py
+	wrangling.py
 
 results/master_df.html: disability.csv master.csv
 	Rscript -e "rmarkdown::render('master_df.rmd', 'html_document',output_dir = 'results/')"
