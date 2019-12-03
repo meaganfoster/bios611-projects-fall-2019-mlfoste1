@@ -69,7 +69,7 @@ veteranstatus_numberofdisabilities_df = master_df %>%
 #  geom_boxplot()
 
 #master_gather_df = gather(master_df, key = "DisabilityType", value = "YesorNo",
-mclientid,-MaxAge,-Age,-Ethnicity,-Gender,-Race,-ClientID,'AlcoholAbuse(HUD)')
+#mclientid,-MaxAge,-Age,-Ethnicity,-Gender,-Race,-ClientID,'AlcoholAbuse(HUD)')
 
 #,'BothAlcoholandDrugAbuse(HUD),ChronicHealthCondition(HUD),Developmental(HUD),DrugAbuse(HUD),HIV/AIDS(HUD),MentalHealthProblem(HUD),Other,Other:Learning,Physical(HUD),Physical/Medical,VisionImpaired,-TotalNumofDisabilities
 
