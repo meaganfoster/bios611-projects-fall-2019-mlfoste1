@@ -7,7 +7,6 @@ output: html_document
 
   ```{r}
 source("master_df.R")
-
 ```
 
 ## Objectives
@@ -41,13 +40,6 @@ veteranstatus_race_plot
 #Veteran Status by Age
 veteranstatus_age_plot
 ```
-
-
-  ```{r}
-#Veteran Status by Age
-disability_plot
-```
-
 
 
   ```{r}
