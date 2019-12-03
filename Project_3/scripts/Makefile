@@ -3,7 +3,7 @@ build_project3:
 	touch $@
 	
 master.csv: build_project3
-	python scripts/wrangling.py
+	python scripts/wrangling.py && \
 	git:
     git add .
     git commit -m "$m"
@@ -12,7 +12,7 @@ master.csv: build_project3
 	
 
 disability.csv: build_project3
-	python scripts/wrangling.py
+	python scripts/wrangling.py && \
 	git:
     git add .
     git commit -m "$m"
