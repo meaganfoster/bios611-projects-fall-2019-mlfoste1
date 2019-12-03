@@ -5,18 +5,18 @@ build_project3:
 master.csv: build_project3
 	python scripts/wrangling.py && \
 	git add .
-	git commit -m "update master.csv"
 	git config --global user.email "mlfoste1@gmail.com"
 	git config --global user.name "mlfoste1"
+	git commit -m "update master.csv"
 	git push -u origin master
 	
 
 disability.csv: build_project3
 	python scripts/wrangling.py && \
 	git add .
-	git commit -m "update master.csv"
 	git config --global user.email "mlfoste1@gmail.com"
 	git config --global user.name "mlfoste1"
+	git commit -m "update master.csv"
 	git push -u origin master
 
 	
