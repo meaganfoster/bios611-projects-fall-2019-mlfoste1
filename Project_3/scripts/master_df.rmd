@@ -3,7 +3,6 @@ title: "Comparative Analysis of the Homeless Veteran and Non-Veteran Demographi
 author: "Meagan Foster"
 date: "December 1, 2019"
 output: html_document
-
 ---
 
   ```{r}

@@ -60,10 +60,10 @@ veteranstatus_age_plot = ggplot(veteranstatus_age_df, aes(x = VeteranStatus, y =
 
 
 #---veteran status by disability type
-veteranstatus_numberofdisabilities = master_df %>%
+veteranstatus_numberofdisabilities_df = master_df %>%
   filter(VeteranStatus %in% c("Yes (HUD)","No (HUD)"))
 
-#veteranstatus_numberofdisabilities_plot
+#veteranstatus_numberofdisabilities_df
 
 #veteranstatus_numberofdisabilities_plot = ggplot(veteranstatus_numberofdisabilities, aes(x = VeteranStatus, y = TotalNumofDisabilities)) +
 #  geom_boxplot()
