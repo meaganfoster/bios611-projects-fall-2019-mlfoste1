@@ -6,4 +6,4 @@ master.csv: build_project3
 	python scripts/wrangling.py
 	
 results/master_df.html: master.csv
-	Rscript -e "rmarkdown::render('scripts/master_df.rmd', 'html_document',output_dir = 'results/master_df.html')"
+	Rscript -e "rmarkdown::render('scripts/master_df.rmd', 'html_document',output_dir = 'results/')"
