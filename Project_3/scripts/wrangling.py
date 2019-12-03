@@ -66,7 +66,7 @@ client_read_df = client_read_df.replace(to_replace ="No (HUD)", value ="No")
 client_read_df
 
 
-# In[99]:
+# In[106]:
 
 
 #Create distinct client list using the max age recorded
@@ -75,7 +75,15 @@ client_maxage_df = client_read_df.groupby(['ClientID'], sort=False)['Age'].max()
 client_maxage_df
 
 
-# In[42]:
+# In[107]:
+
+
+client_maxage_df = client_maxage_df.to_frame().reset_index()
+
+client_maxage_df.columns = ['ClientID','Age']
+
+
+# In[108]:
 
 
 #Append corresponding demographics to distinct patient list
