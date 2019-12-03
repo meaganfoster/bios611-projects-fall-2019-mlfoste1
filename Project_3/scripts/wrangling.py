@@ -109,7 +109,7 @@ disability_read_df = pd.read_csv(
     ,header=0
 )
 
-disability_df.head(10)
+disability_read_df
 #disability_total_rows = disability_df.count
 #print (disability_total_rows)
 
