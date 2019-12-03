@@ -5,8 +5,8 @@ library(ggplot2)
 
 
 #load master data file
-master_df = read_csv("https://raw.githubusercontent.com/datasci611/bios611-projects-fall-2019-mlfoste1/master/Project_3/data/master.csv", na = 'NaN')
-
+#master_df = read_csv("https://raw.githubusercontent.com/datasci611/bios611-projects-fall-2019-mlfoste1/master/Project_3/data/master.csv", na = 'NaN')
+master_df = read_csv("../data/master.csv", na = 'NaN')
 
 #Create datasets from master data file----------------------------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ master_df = read_csv("https://raw.githubusercontent.com/datasci611/bios611-proje
 #---veteran status by gender
 
 veteranstatus_gender_df = master_df %>%
-  filter(VeteranStatus %in% c("Yes (HUD)","No (HUD)")) %>%
+  filter(VeteranStatus %in% c("Yes","No")) %>%
   filter(Gender %in% c("Female","Male","Trans Female (MTF or Male to Female)"))
 #view(veteranstatus_gender_df)
 
@@ -24,17 +24,16 @@ veteranstatus_gender_plot = ggplot(veteranstatus_gender_df, aes(x = Gender, fill
   geom_bar() +
   xlab("Gender") + 
   ylab("Veteran Status")
-
 #veteranstatus_gender_plot
 
 #---veteran status by Race
 veteranstatus_race_df = master_df %>%
-  filter(VeteranStatus %in% c("Yes (HUD)","No (HUD)")) %>%
-  filter(Race %in% c("White (HUD)",
-                     "Black or African American (HUD)",
-                     "American Indian or Alaska Native (HUD)",
-                     "Asian (HUD)",
-                     "Native Hawaiian or Other Pacific Islander (HUD)",
+  filter(VeteranStatus %in% c("Yes","No")) %>%
+  filter(Race %in% c("White",
+                     "Black/African American",
+                     "American Indian/Alaska Native",
+                     "Asian",
+                     "Native Hawaiian/Pacific Islander",
                      "Client doesnt know (HUD)",
                      "Data not collected (HUD)",
                      "Client refused (HUD)") 
@@ -43,14 +42,14 @@ veteranstatus_race_df = master_df %>%
 
 veteranstatus_race_plot = ggplot(veteranstatus_race_df, aes(x = Race, fill = VeteranStatus)) +
   geom_bar() +
-  theme(axis.text.x = element_text(angle = 55, hjust = 1)) +
-  legend("Veteran Status") 
+  theme(axis.text.x = element_text(angle = 55, hjust = 1))
+  
 #veteranstatus_race_plot
 
 
 #---veteran status by Age
 veteranstatus_age_df = master_df %>%
-  filter(VeteranStatus %in% c("Yes (HUD)","No (HUD)")) %>%
+  filter(VeteranStatus %in% c("Yes","No")) %>%
   drop_na(Age)
 #veteranstatus_age_df
 
@@ -61,7 +60,7 @@ veteranstatus_age_plot = ggplot(veteranstatus_age_df, aes(x = VeteranStatus, y =
 
 #---veteran status by disability type
 veteranstatus_numberofdisabilities_df = master_df %>%
-  filter(VeteranStatus %in% c("Yes (HUD)","No (HUD)"))
+  filter(VeteranStatus %in% c("Yes","No"))
 
 #veteranstatus_numberofdisabilities_df
 

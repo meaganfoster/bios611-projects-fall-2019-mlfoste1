@@ -5,7 +5,7 @@ date: "December 1, 2019"
 output: html_document
 ---
 
-  ```{r}
+  ```{r include=FALSE}
 source("master_df.R")
 ```
 
@@ -90,11 +90,6 @@ veteranstatus_age_plot
 ##How does the number of reported disabilities by a homeless veteran compare to that of a non-veteran at UMD?
 
 Veteran Status by Disability Type
-
-  ```{r}
-#Veterans with Disabilities
-disability_veteran_plot
-```
 
 .63% of the veterans at UMD have reported one or more disability
 
