@@ -1,4 +1,4 @@
-Project_2
+Project_3
 ==============================
 
 
@@ -10,21 +10,11 @@ Use Docker, Make, R and Python for exploratory analysis of UMD data sets. The da
 
 
 ------ ------
-Instructions
------- ------
-
-See pandas_project3.ipynb 
-
-
-
------- ------
 Overview 
 ------------
 My exploratory analysis will focus on the following aims:
-(1) Perform analysis to visualize demographic distribution 
-(2) Understand prevalance of prominent disabilities across demographic groups
-(3) Explore health insurance type distribution across demographic groups
-(4) Where VeteranStatus = "Yes", repeat steps 1-3
+(1)Compare race, gender, and age for non-veteran and veteran clients at UMD
+(2)Compare prevalence of disabilities for non-veteran and veteran UMD clients 
 
 
 ------------
@@ -38,7 +28,6 @@ Race
 Ethnicity
 Zip
 Veteran Status
-Health Insurance Type
 Disability Type
 
 
@@ -46,13 +35,24 @@ Disability Type
 Instructions for use
 ------------
 
-For data wrangling code, see pandas_project3.ipynb
-For plots, see master_df.r --In progress
+1. Clone repository
+
+2. Execute Makefile:
+
+make -f scripts/Makefile results/master_df.html
 
 
 ------------
-Additional Dataset Sources
+References
 ------------
+https://www.usich.gov/resources/uploads/asset_library/Homelessness_in_America._Focus_on_Veterans.pdf
+
+
+------------
+Results
+------------
+
+See results/master_df.html
 
 
 ------------
@@ -62,15 +62,4 @@ Contact
 Meagan Foster
 
 Github: mlfoste1
-
-
-------------
-References
-------------
-
-
-------------
-Results
-------------
-
 

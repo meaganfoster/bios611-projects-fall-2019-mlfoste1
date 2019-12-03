@@ -1,5 +1,5 @@
 ---
-title: "Comparative Analysis of the Homeless Veteran and Non-Veteran Demographic Profiles and Disabilitiesat Urban Ministries of Durham"
+title: "Comparative Analysis of the Homeless Veteran and Non-Veteran Demographic Profiles and Disabilities at Urban Ministries of Durham"
 author: "Meagan Foster"
 date: "December 1, 2019"
 output: html_document
@@ -22,45 +22,93 @@ source("master_df.R")
 See ReadMe.md for more information on data sources and project structure.
 
 
-##UMD Data Summary
+## Overview
+
+.Approximately 11% of the homeless population are veterans
+
+.Most Veterans who experience homelessness are men over age 50 living in urban areas. 
+
+.Among Veterans experiencing sheltered homelessness in 2016, about 9 in 10 (91%) were men, about the same as for all U.S. Veterans.
+
+.Veteran women are more than twice as likely as non-Veteran women to experience homelessness.
+
+.Nearly 6 out of 10 (59.1%) Veterans experiencing sheltered homelessness in 2016 were age 51 or older
+
+.Veterans experiencing sheltered homelessness were 3.3 times more likely to identify as African American or Black, compared to all U.S. Veterans (38.2% vs. 11.4%) in 2016
+
+.A majority (55%) of Veterans experiencing sheltered homelessness had a disability
+
+Among Veterans experiencing homelessness who received health care services from the VA:
+
+.More than one in four (28%) received diagnoses of chronic medical conditions
+
+.More than one in four (28%) received a diagnosis of depression
+
+.One in eight (13%) received a diagnosis of PTSD
+
+.About one in five (19%) received a diagnosis of alcohol abuse
+
+.About one in five (20%) received a diagnosis of drug abuse.
+
+
+##How does the demographic characteristics of a homeless veteran compare to that of a non-veteran at UMD?
+
+Chart1. Veteran Status by Gender
 
   ```{r}
-#Veteran Status by Gender
 veteranstatus_gender_plot
 ```
 
+Additional info:
+
+.16% of the male clients at UMD are veterans
+
+.3% of the female clients at UMD are veterans
+
+.1 of 8 Trans Female (MTF or Male to Female) UMD clients are veterans
+
+
+Chart2. Veteran Status by Race
 
   ```{r}
-#Veteran Status by Race
 veteranstatus_race_plot
 ```
 
+Additional info: 82% of the veterans at UMD are Black or African American.  23% of the veterans at UMD are White.
+
+
+Chart3. Veteran Status by Age 
 
   ```{r}
-#Veteran Status by Age
 veteranstatus_age_plot
 ```
 
+.The average age of a veteran client is 53 years old
 
-  ```{r}
-#Veteran Status by Age
-disability_master_plot
-```
+.The average age for a non-veteran client is 43 years old
 
+##How does the number of reported disabilities by a homeless veteran compare to that of a non-veteran at UMD?
 
+Veteran Status by Disability Type
 
   ```{r}
 #Veterans with Disabilities
 disability_veteran_plot
 ```
 
+.63% of the veterans at UMD have reported one or more disability
+
+.53% of  non-veterans at UMD have reported one or more disability
+
+
+
 
 ##Conclusion
 
-Conduct a better count nationally. HUD's count should:
+.The demographic profile of the homeless veteran population at UMD is generally consistent with that of homeless non-veteran population in regards to gender and race
 
-.Be nationally coordinated with a more consistent and morerigorous methodology. This and requires appropriate fundinglevels in order to get more useful data.
+.There is a significant difference is median and average ages amongst homeless veterans compared to the non-homeless veteran population at UMD
 
-.Include estimation techniques designed and overseen byexperts in order to quantify the number of homeless individualsthat were missed during the count.
+.Veterans report disabilities at a higher rate than non-veterans
 
-.Include all people experiencing homelessness, includingindividuals that are institutionalized in hospitals and jails orprisons
+.Majority of the disability types were reported consistently across both groups with the exception of Physical/Medical health.
