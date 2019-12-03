@@ -2,10 +2,10 @@ build_project3:
 	docker build -t dockerbuild	.	-f scripts/Dockerfile && \
 	touch $@
 	
-master.csv: build
+master.csv: build_project3
 	python wrangling.py
 
-disability.csv: build
+disability.csv: build_project3
 	python wrangling.py
 
 results/master_df.html: disability.csv master.csv
