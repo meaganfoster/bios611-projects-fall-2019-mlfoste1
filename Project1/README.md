@@ -131,7 +131,7 @@ Contact
 
 Meagan Foster
 
-Github: mlfoste1
+Github: meaganfoster
 
 
 
